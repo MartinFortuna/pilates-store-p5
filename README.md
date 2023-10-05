@@ -4,7 +4,8 @@
 ## Overview
 
 
-Pilates with Chris is a Pilates one-stop shop fictional E-Commerce website for members only. Users can add products to their shopping cart, rate them, and pay securely with Stripe.
+Pilates with Chris is a Pilates one-stop shop fictional E-Commerce website for members only. 
+Cris, an experienced Pilates teacher, decided to start selling Pilates professional pilates equipment. Users can add products to their shopping cart, rate them, and pay securely with Stripe.
 
 ## Project Goals
 
@@ -74,3 +75,37 @@ Pilates with Chris is a Pilates one-stop shop fictional E-Commerce website for m
 
 #### As a returning website user I want:
     22. As a returning user, I want to view my order history so that I can keep track of my purchases and invoices.
+
+
+## Design
+
+The website is fully responsive and designed with an easy-access hamburger menu to make navigation intuitive on small to medium screens.I decided to use Bootstrap's light background along with its warning yellow across the website for consistency and pleasing colors.
+
+![Pilates with Chris colors](docs/screenshots/color_paletter.png)
+
+### App Structure
+
+- Non-authenticated user Flow:
+
+![Non authenticated user](docs/screenshots/non-authenticated-users-flow.png)
+
+- Authenticated regular user Flow:
+
+![Authenticated regular user](docs/screenshots/authenticated-regular-user.png)
+
+- Authenticated admin user Flow:
+
+![Authenticated admin user](docs/screenshots/authenticated-admin-user.png)
+
+### Wireframe:
+
+Home page design wireframe:
+
+![Home](docs/screenshots/home-page.png)
+
+### Data Schema:
+
+- Relational Model - User (Allauth), User Details, Product, Product Rate, Category, Product Size, Inventory, Order, Order Item.
+
+![Database diagram](docs/screenshots/DrawSQL-Database-Diagram.png)
+
