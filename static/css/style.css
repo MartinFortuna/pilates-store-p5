@@ -27,6 +27,25 @@ a {
     left: auto !important;
 }
 
+ /* Index */
+
+ .rounded-pill {
+  max-height: 20rem;
+}
+
+.card-header,
+.card-footer {
+  background-color: #3B6D7A!important;
+}
+
+.btn-warning {
+color:  #3B6D7A!important;
+}
+
+.border {
+color:  #3B6D7A!important;
+}
+
 /* Toasts */
 .message-container {
     position: fixed;

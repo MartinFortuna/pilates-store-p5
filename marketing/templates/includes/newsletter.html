@@ -1,0 +1,61 @@
+<div class="card col-10 mx-auto mb-5">
+    <div class="card-header"></div>
+    <div class="card-body mx-auto text-center">
+        <h2>Subscribe to Our NewsLetter!</h2>
+
+        <form class="row g-3 validation mt-2"  method="post" action="{% url 'newsLetter' %}" novalidate>
+          {% csrf_token %}
+          {{ form.as_p }}
+          <div class="col-md-4">
+            <input type="text" name="firstName" class="form-control" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="col-md-4">
+            <input type="text" name="lastName" class="form-control" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="col-md-4">
+            <input type="email" name="email" class="form-control" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-warning" type="submit">Subscribe</button>
+          </div>
+        </form>
+        <hr class="col-4 mx-auto">
+        <a href="{% url 'unsubscribe' %}" class="btn btn-warning btn-sm">Unsubscribe</a>
+    </div>
+    <script>
+      // Disabling form submissions if there are invalid fields
+      (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles
+        var forms = document.querySelectorAll('.validation')
+
+        // Function to handle form submission
+        function handleFormSubmit(event) {
+          var form = event.target;
+
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+        }
+
+        // Loop over them and prevent submission
+        forms.forEach(function (form) {
+          form.addEventListener('submit', handleFormSubmit, false)
+        })
+      })()
+    </script>
+    <div class="card-footer text-muted"></div>
+</div>

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card col-10 mx-auto my-5">
+    <div class="card-header"></div>
+    <div class="card-body mx-auto text-center">
+        <h2>Unsubscribe to Our NewsLetter</h2>
+
+        <form class="mt-5" method="post" action="{% url 'unsubscribe' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="email" name="email" placeholder="Your Email">
+            <hr class="col-4 mx-auto">
+            <button class="btn btn-warning" type="submit">Unsubscribe!</button>
+        </form>
+    </div>
+    <div class="card-footer text-muted"></div>
+</div>
+{% endblock %}

@@ -68,10 +68,10 @@
       <script>
         const messageContainer = document.querySelector(".message-container");
         const closeButton = document.querySelector(".toast-header button");
-        // when close button is clicked, set message container display to none
+        // Mhen close button is clicked, set message container display to none
         closeButton.onclick = () => messageContainer.style.display = 'none';
     
-        // make toast disappear after 4 seconds
+        // Make toast disappear after 4 seconds
         setTimeout(() => {
             messageContainer.style.display = 'none';
         }, 3000);
