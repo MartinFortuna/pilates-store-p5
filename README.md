@@ -6,6 +6,9 @@
 
 Pilates with Chris is a Pilates one-stop shop fictional E-Commerce website for members only. Users can add products to their shopping cart, rate them, and pay securely with Stripe.
 
+## Project Goals
+
+- As part of my journey as a student of Code Institute, the goal of this project is to demonstrate how I can apply my Bootstrap, Python & Django skills. I've built a fully friendly UX by not using the default built-in Django admin panel for the admin user view. 
 
 ## Business Model
 
@@ -49,21 +52,25 @@ Pilates with Chris is a Pilates one-stop shop fictional E-Commerce website for m
 
     3. As an admin user, I want regular users to purchase physical products so that I can generate revenue. 
     4. As an admin user, I want to view, add, edit, and delete products, so that I can manage my store. 
+    5. As an admin user, I want to create or update a product inventory quantity, so that I can keep track of the quantities for each product in my warehouse.
+    6. As an admin user, I want a product inventory quantity to be updated once it's purchased.     
 
 #### As a regular website user I want:
-    5. As a user, I want to easily understand the website's purpose and navigation, so that I can fully benefit from its services.
-    6. As a user, I can register, log in, or log out on the website so that I can access the products feature.
-    7. As a user, I can choose to view, edit, and delete my profile so that correct and erase my information.
-    8. As a user, I want to be confident that the payment is secure so that I can feel safe. 
-    9. As a user, I want to rate products so that I can share my opinion. 
-    10. As a user, I want to easily search and filter products, so that I can easily find what I want.
-    11. As a user, I want to select the size if size exists, so that I can purchase the suitable product.
-    12. As a user, I want to view a confirmation and receive an email of my order, so that I see my purchase details. 
-    13. As a user, I can view the website on different devices so that I can access it anytime.
-    14. As a user, I can subscribe to a newsletter so that I can be informed of the latest news.
-    15. As a user, I want to leave a testimonial so that others can know my opinion.
-    16. As a user, I want modify an existing order so that I can correct any mistakes.
-    17. As a user, I want a contact form so that I can message the staff via email.
+    7. As a user, I want to easily understand the website's purpose and navigation, so that I can fully benefit from its services.
+    8. As a user, I can register, log in, or log out on the website so that I can access the products feature.
+    9. As a user, I can choose to view, edit, and delete my profile so that correct and erase my information.
+    10. As a user, I want to be confident that the payment is secure so that I can feel safe. 
+    11. As a user, I want to rate products so that I can share my opinion. 
+    12. As a user, I want to easily search and filter products, so that I can easily find what I want.
+    13. As a user, I want to select the size if size exists, so that I can purchase the suitable product.
+    14. As a user, I want to view a confirmation and receive an email of my order, so that I see my purchase details. 
+    15. As a user, I can view the website on different devices so that I can access it anytime.
+    17. As a user, I can subscribe to a newsletter so that I can be informed of the latest news.
+    18. As a user, I want to leave a testimonial so that others can know my opinion.
+    19. As a user, I want to modify an existing order so that I can correct any mistakes.
+    20. As a user, I want a contact form so that I can message the staff via email.
+    21. As a user, I want to know how many products are left in stock so that I can quickly purchase items almost out of stock.
+    22. As a user, I want to quickly login using my social media account, so that I don't have to enter login details manually.  
 
 #### As a returning website user I want:
-    15. As a returning user, I want to view my order history so that I can keep track of my purchases and invoices.
+    22. As a returning user, I want to view my order history so that I can keep track of my purchases and invoices.
