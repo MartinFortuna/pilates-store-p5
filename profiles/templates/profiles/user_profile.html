@@ -16,9 +16,38 @@
             <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
             {% for profile in profiles %}
             <p class="card-text"><strong>Telephone:</strong>{{ profile.telephone }}</p>
+            <p class="card-text"><strong>Number:</strong>{{ profile.address1 }}</p>
+            <p class="card-text"><strong>Address:</strong>{{ profile.address2 }}</p>
+            <p class="card-text"><strong>City:</strong>{{ profile.city }}</p>
+            <p class="card-text"><strong>County:</strong>{{ profile.county }}</p>
+            <p class="card-text"><strong>Eir Code:</strong>{{ profile.postal_code }}</p>
             {% endfor %}
             </div>
+            <div class="d-flex justify-content-center">
+                <a class="btn btn-warning col-sm-2 m-2" href="{% url 'update_profile' %}">Update your profile</a>
+                <a class="btn btn-danger col-sm-2 m-2 text-white" href="#">Delete your profile</a>
+            </div>
         </div>
-    </div>  
+    </div>
+    <div class="card-body">
+        <button class="btn btn-warning col-12" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-oders" aria-expanded="false" aria-controls="collapse-oders">
+            Order History
+        </button>
+        <div class="collapse" id="collapse-oders">
+            <div class="card-body">
+            <p>Order: 145587921</p>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <button class="btn btn-warning col-12" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-password" aria-expanded="false" aria-controls="collapse-password">
+            Reset Password
+        </button>
+        <div class="collapse" id="collapse-password">
+            <div class="card-body">
+                <a class="button secondaryAction" href="{% url 'account_reset_password' %}">Reset my password</a>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="card col-11 col-md-6 col-lg-4 mx-auto text-center">
+        <div class="card-header"></div>
+        <div class="card-body">
+            <h2 class="mb-2">Update Profile</h2>
+            <form method="POST" action="{% url 'update_profile' %}">
+                {% csrf_token %}
+                {{ user_form.as_p }}
+                {{ profile_form.as_p }}
+                <button class="btn btn-warning" type="submit">Update Profile</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
