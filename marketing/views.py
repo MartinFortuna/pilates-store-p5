@@ -36,8 +36,8 @@ def subscribe_newsLetter(request):
             mailchimpClient.lists.add_list_member(list_id, userInfo)
             messages.success(request, f"Thank you for subscribing!")
         except ApiClientError as error:
-            if error.status_code == 400 and 'already a list member' in error.text:
-                messages.error(request, f"Oops, your email is already subscribed!")
+            if error.status_code == 400 and 'already a list mem' in error.text:
+                messages.info(request, f"Already subscribed!")
             else:
                 messages.error(request, f"Oops, {error.text}")
     return render(request, "home/index.html")
