@@ -27,17 +27,56 @@
 <body class="bg-light">
     {% include 'includes/nav.html' %}
     {% if messages %}
-        <div class="message-container"></div>
+        <div class="message-container">
+            {% for message in messages%}
+                {% with message.level as level %}
+                    {% if level == 40 %}
+                    {% include 'includes/toasts/toast_error.html' %}
+                    {% elif level == 30 %}
+                        {% include 'includes/toasts/toast_warning.html' %}
+                    {% elif level == 25 %}
+                        {% include 'includes/toasts/toast_success.html' %}
+                    {% else %}
+                        {% include 'includes/toasts/toast_info.html' %}
+                    {% endif %}
+                {% endwith %}
+            {% endfor %}
+        </div>
     {% endif %}
 
     {% block content %}
     {% endblock %}
+    
+    
+    {% include 'includes/footer.html' %}
 
     {% block postloadjs %}
       <script>
         $(".toast").toast('show');
       </script>
     {% endblock %}
-    {% include 'includes/footer.html' %}
+
+    <!-- If messages exist -->
+    {% if messages %}
+      <!-- Set toast opacity if messages exist -->
+      <style>
+        .toast:not(.showing):not(.show) {
+          opacity: 1 !important;
+        }
+      </style>
+      <!-- Select the close button and the message container -->
+      <script>
+        const messageContainer = document.querySelector(".message-container");
+        const closeButton = document.querySelector(".toast-header button");
+        // when close button is clicked, set message container display to none
+        closeButton.onclick = () => messageContainer.style.display = 'none';
+    
+        // make toast disappear after 4 seconds
+        setTimeout(() => {
+            messageContainer.style.display = 'none';
+        }, 3000);
+      </script>
+    {% endif %}
+
 </body>
 </html>

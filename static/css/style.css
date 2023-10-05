@@ -27,6 +27,23 @@ a {
     left: auto !important;
 }
 
+/* Toasts */
+.message-container {
+    position: fixed;
+    top: 6rem;
+    right: 0.5rem;
+    z-index: 99999999999;
+  }
+  
+  .custom-toast {
+    overflow: visible;
+  }
+  
+  .toast-capper {
+    height: 2px;
+  }
+  
+
 /* Footer */
 
 footer {
