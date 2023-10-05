@@ -50,7 +50,7 @@ Pilates with Chris is a Pilates one-stop shop fictional E-Commerce website for m
 
 #### As an admin user:
 
-    3. As an admin user, I want regular users to purchase physical products so that I can generate revenue. 
+    3. As an admin user, I want regular users to view my products so that I can generate revenue. 
     4. As an admin user, I want to view, add, edit, and delete products, so that I can manage my store. 
     5. As an admin user, I want to create or update a product inventory quantity, so that I can keep track of the quantities for each product in my warehouse.
     6. As an admin user, I want a product inventory quantity to be updated once it's purchased.     
@@ -65,12 +65,12 @@ Pilates with Chris is a Pilates one-stop shop fictional E-Commerce website for m
     13. As a user, I want to select the size if size exists, so that I can purchase the suitable product.
     14. As a user, I want to view a confirmation and receive an email of my order, so that I see my purchase details. 
     15. As a user, I can view the website on different devices so that I can access it anytime.
-    17. As a user, I can subscribe to a newsletter so that I can be informed of the latest news.
-    18. As a user, I want to leave a testimonial so that others can know my opinion.
-    19. As a user, I want to modify an existing order so that I can correct any mistakes.
-    20. As a user, I want a contact form so that I can message the staff via email.
-    21. As a user, I want to know how many products are left in stock so that I can quickly purchase items almost out of stock.
-    22. As a user, I want to quickly login using my social media account, so that I don't have to enter login details manually.  
+    16. As a user, I can subscribe to a newsletter so that I can be informed of the latest news.
+    17. As a user, I want to leave a testimonial so that others can know my opinion.
+    18. As a user, I want to modify an existing order so that I can correct any mistakes.
+    19. As a user, I want a contact form so that I can message the staff via email.
+    20. As a user, I want to know how many products are left in stock so that I can quickly purchase items almost out of stock.
+    21. As a user, I want to quickly login using my social media account, so that I don't have to enter login details manually.  
 
 #### As a returning website user I want:
     22. As a returning user, I want to view my order history so that I can keep track of my purchases and invoices.
