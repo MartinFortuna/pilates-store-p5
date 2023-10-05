@@ -1,11 +1,13 @@
-from django.urls import path, include, reverse
-from django.shortcuts import render
-from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
-from profiles.models import UserDetail
-from profiles.forms import UserForm, UserProfileForm
 from django.contrib import messages
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
+from django.urls import include, path, reverse
+
+from profiles.forms import UserProfileForm, UserForm
+from profiles.models import UserDetail
 
 # Create your views here.
 
@@ -52,3 +54,17 @@ def update_profile(request):
 
     template = 'profiles/update_profile.html'
     return render(request, template, context)
+
+@login_required
+def delete_profile(request):
+    if request.method == 'POST':
+        user = request.user
+        profile = get_object_or_404(UserDetail, user_id=request.user)
+        profile.delete()
+        user.delete()
+        messages.success(request, "Your profile was deleted")
+        logout(request)
+        return HttpResponseRedirect(reverse('home'))
+    else:
+        template = 'profiles/delete_profile.html'
+        return render(request, template)
