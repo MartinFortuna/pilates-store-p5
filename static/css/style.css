@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&family=Oswald:wght@300&family=Roboto+Mono:wght@300&family=Roboto:wght@300;400&display=swap');
+
+/* Global Style */
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    overflow-x: hidden;
+    color: #3B6D7A!important;
+    max-width: 2500px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Nav Bar */
+
+nav p {
+    color: #3B6D7A!important;
+}
+
+a {
+    color: #3B6D7A!important;
+}
+
+.dropdown-menu-right {
+    right: 0!important;
+    left: auto !important;
+}

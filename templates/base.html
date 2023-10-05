@@ -25,7 +25,7 @@
     <title>Pilates with Chris</title>
 </head>
 <body class="bg-light">
-
+    {% include 'includes/nav.html' %}
     {% if messages %}
         <div class="message-container"></div>
     {% endif %}
@@ -34,7 +34,7 @@
     {% endblock %}
 
     {% block postloadjs %}
-      <script type="text/javascript">
+      <script>
         $(".toast").toast('show');
       </script>
     {% endblock %}
