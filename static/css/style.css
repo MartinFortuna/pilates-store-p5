@@ -61,6 +61,19 @@ color:  #3B6D7A!important;
   .toast-capper {
     height: 2px;
   }
+
+/* Toast style for screends that are 576px wide or less */
+
+@media screen and (max-width: 576px){
+    .message-container {
+      right:0.25rem;
+  }
+
+  .custom-toast {
+    font-size: 0.8rem;
+    width: 15rem;
+  }
+}
   
 
 /* Footer */
