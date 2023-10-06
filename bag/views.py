@@ -54,7 +54,6 @@ def remove_from_bag(request, item_id):
     """ Remove the specified product from the shopping bag """
     product = Product.objects.get(id=item_id)
     size = request.POST.get('size')
-    redirect_url = request.POST.get('redirect_url')
     bag = request.session.get('bag', {})
     inventory_item = InventoryProduct.objects.filter(id_product=product, id_size__size=size).first()
 
@@ -69,3 +68,36 @@ def remove_from_bag(request, item_id):
     request.session['bag'] = bag
 
     return redirect(reverse('bag'))
+
+
+@login_required
+def update_bag(request, item_id):
+    """ Update the quantity of the specified product on the bag"""
+    redirect_url = request.POST.get('redirect_url')
+    str_quantity = request.POST.get('quantity')
+    if str_quantity == '' or str_quantity is None:
+        return redirect(redirect_url)
+
+    product = Product.objects.get(id=item_id)
+    quantity = int(str_quantity)
+    size = request.POST.get('size')
+    bag = request.session.get('bag', {})
+    inventory_item = InventoryProduct.objects.filter(id_product=product, id_size__size=size).first()
+
+    if size:
+        if item_id in bag and 'items_by_size' in bag[item_id] and \
+           size in bag[item_id]['items_by_size']:
+            if quantity > 0:
+                bag[item_id]['items_by_size'][size] = quantity
+            messages.success(request, f'Updated quantity of "{product.name}" size { inventory_item.id_size.size } to {bag[item_id]["items_by_size"][size]} in your bag')
+        else:
+            del bag[item_id]['items_by_size'][size]
+            if not bag[item_id]['items_by_size']:
+                del bag[item_id]
+    else:
+        if quantity > 0:
+            bag[item_id] = quantity
+            messages.success(request, f'Updated quantity of "{product.name}" to to {bag[item_id]} in your bag')
+
+    request.session['bag'] = bag
+    return redirect(redirect_url)

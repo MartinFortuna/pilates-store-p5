@@ -18,7 +18,7 @@
                     {% if item.size %}
                     <p>Size: {{ item.size }}</p>
                     {% endif %}
-                    <form method="POST" action="#">
+                    <form method="POST" action="{% url 'update_bag' item.product.id %}">
                         {% csrf_token %}
                         {% if item.size %}
                         <input type="hidden" name="size" value="{{ item.size }}">
