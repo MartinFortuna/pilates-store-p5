@@ -32,7 +32,7 @@
                     </form>
                     <p>Price: {{ item.product.price }}</p>
                     <p>Subtotal: €{{ item.product.price | calc_subtotal:item.quantity }}</p>
-                    <form method="POST" action="#" class="mt-2">
+                    <form method="POST" action="{% url 'remove_from_bag' item.product.id %}" class="mt-2">
                         {% csrf_token %}
                         <input type="hidden" name="size" value="{{ item.size}}">
                         <input type="hidden" name="quantity" value="{{ item.quantity }}">
@@ -48,7 +48,7 @@
             <div class="card-footer"></div>
         </div>
     </div>
-    <div class="col-10 col-sm-6 col-md-3 text-center p-0 mx-lg-2">
+    <div class="col-10 col-sm-6 col-md-3 text-center p-0">
         <div class="card-header"></div>
         <div class="card-body">
             <h6><strong>Bag Total: €{{ total|floatformat:2 }}</strong></h6>
@@ -63,18 +63,19 @@
                 You could get free delivery by spending just <strong>€{{ free_delivery_delta }}</strong> more!
             </p>
             {% endif %}
-
-            <a href="#" class="btn btn-warning mt-3">
-                <span class="text-uppercase">Secure Checkout</span>
-                <span class="icon">
-                    <i class="fas fa-lock"></i>
-                </span>
-            </a>
+            
+            
             <a href="{% url 'products' %}" class="btn btn-outline-black mt-3">
                 <span class="icon">
                     <i class="fas fa-chevron-left"></i>
                 </span>
                 <span class="font-weight-bold">Keep Shopping</span>
+            </a>
+            <a href="#" class="btn btn-warning mt-3">
+                <span class="text-uppercase">Secure Checkout</span>
+                <span class="icon">
+                    <i class="fas fa-lock"></i>
+                </span>
             </a>
         </div>
         <div class="card-footer"></div>

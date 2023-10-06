@@ -47,3 +47,25 @@ def add_to_bag(request, item_id):
 
     request.session['bag'] = bag
     return redirect(redirect_url)
+
+
+@login_required
+def remove_from_bag(request, item_id):
+    """ Remove the specified product from the shopping bag """
+    product = Product.objects.get(id=item_id)
+    size = request.POST.get('size')
+    redirect_url = request.POST.get('redirect_url')
+    bag = request.session.get('bag', {})
+    inventory_item = InventoryProduct.objects.filter(id_product=product, id_size__size=size).first()
+
+    if size:
+        del bag[item_id]['items_by_size'][size]
+        messages.success(request, f'Deleted  all "{product.name}" products size { inventory_item.id_size.size } from your bag')
+        if not bag[item_id]['items_by_size']:
+            del bag[item_id]
+    else:
+        del bag[item_id]
+        messages.success(request, f'Deleted  all "{product.name}" products from your bag')
+    request.session['bag'] = bag
+
+    return redirect(reverse('bag'))
