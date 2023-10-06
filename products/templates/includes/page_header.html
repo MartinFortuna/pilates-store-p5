@@ -6,7 +6,7 @@
         </button>
     </form>
 
-    <a class="{% if grand_total %}text-primary font-weight-bold{% else %}text-black{% endif %}" href="">
+    <a class="{% if grand_total %}text-primary font-weight-bold{% else %}text-black{% endif %}" href="{% url 'bag' %}">
         <div class="text-center">
             <div class="mt-3 mb-1"><i class="fa-solid fa-cart-shopping fa-2xl"></i></div>
             <p class="mb-3">
