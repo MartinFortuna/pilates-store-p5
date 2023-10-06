@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <h5 class="mt-2"><strong>Your Details</strong></h5>
                     <p>Please fill out the below form to complete your order</p>
-                    <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                    <form action="{% url 'checkout' %}" method="POST" class="payment-form">
                         {% csrf_token %}
                         {{ order_form.username|as_crispy_field }}
                         {{ order_form.email|as_crispy_field }}
@@ -75,7 +75,7 @@
                 <div class="card-header"></div>
                 <h5 class="mt-2"><strong>Secure checkout with stripe</strong></h5>
                 <div class="card-body border">
-                    <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                    <form action="{% url 'checkout' %}" method="POST" class="payment-form">
                         <div class="mb-3" id="card-element"></div>
                         <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
@@ -100,4 +100,11 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
+<script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
