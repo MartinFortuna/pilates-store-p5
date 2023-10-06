@@ -14,4 +14,4 @@ class UserDetail(models.Model):
     county = models.CharField(max_length=50, null=True)
 
     def __str__(self):
-        return f"User: {self.user_id} || Telephone: {self.telephone} || Address1: {self.address1} || PostalCode: {self.postal_code} || City: {self.city} || County: {self.county} || Country: {self.country}"
+        return f"User: {self.user_id} || Telephone: {self.telephone} || Address1: {self.address1} || PostalCode: {self.postal_code} || City: {self.city} || County: {self.county}"
