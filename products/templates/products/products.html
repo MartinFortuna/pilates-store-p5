@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container-fluid col-11 mx-auto my-3">
+        <div class="row text-center">
+            <p class="text-danger mt-3">
+                <strong>We only ship within Ireland, Free delivery on orders over €!</strong>
+            </p>
+        </div>
+        <div class="row">
+            {% for product in products %}
+                <div class="col-xl-3 col-sm-4 col-lg-4 border">
+                    <a href="#">
+                        <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                        <p class="text-center"><strong>{{ product.name }}</strong></p>
+                        <p><strong>€{{ product.price }}</strong></p>
+                        {% if product.category_id %}
+                        <p class="mt-1">
+                            <a href="#">
+                                <i class="fas fa-tag mr-1"></i>{{ product.category_id.name }}
+                            </a>
+                        </p>
+                        {% endif %}
+                        {% if product.avg_rating %}
+                            <small><i class="fas fa-star ratings"></i><span class="ms-2">{{ product.avg_rating|floatformat }}</span>/5</small>
+                        {% else  %}
+                            <small> Be the first to rate!</small>
+                        {% endif  %}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
