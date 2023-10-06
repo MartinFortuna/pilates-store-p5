@@ -26,7 +26,6 @@
                         {{ order_form.city|as_crispy_field }}
                         {{ order_form.county|as_crispy_field }}
                         {{ order_form.postal_code|as_crispy_field }}
-                    </form>
                 </div>
                 <div class="card-footer"></div>
             </div>
@@ -75,7 +74,6 @@
                 <div class="card-header"></div>
                 <h5 class="mt-2"><strong>Secure checkout with stripe</strong></h5>
                 <div class="card-body border">
-                    <form action="{% url 'checkout' %}" method="POST" class="payment-form">
                         <div class="mb-3" id="card-element"></div>
                         <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
