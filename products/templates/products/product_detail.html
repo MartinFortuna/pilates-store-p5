@@ -3,23 +3,24 @@
 {% block content %}
 {% include 'includes/page_header.html' %}
 <div class="card container-fluid">
-    <div class="card-header"></div>
-    <div class="card-body">
+    <div class="card-header mt-4"></div>
+    <div class="card-body mx-auto">
         <div class="row">
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6">
                 {% if product.image %}
                 <a href="{{ product.image.url }}" target="_blank">
                     <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                 </a>
                 {% endif %}
             </div>
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6">
                 <p class="mb-0">{{ product.name }}</p>
                 <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
                 <a href="{% url 'products' %}?category={{ product.category_id.name }}">
                     <i class="fas fa-tag mr-1"></i>{{ product.category_id.name }}
                 </a>
-                <a href="#">Rate this product</a>
+                <hr>
+                <a href="{% url 'rate_product' product.id %}">Rate this product</a>
                 {% if product.avg_rating %}
                 <small><i class="fas fa-star ratings"></i><span
                         class="ms-2">{{ product.avg_rating|floatformat }}</span>/5</small>
@@ -62,7 +63,7 @@
                 </a>
             </div>
         </div>
-        <div class="card-footer mt-3 mb-1"></div>
     </div>
+    <div class="card-footer mt-3 mb-1"></div>
 </div>
 {% endblock %}

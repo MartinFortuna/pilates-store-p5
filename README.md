@@ -71,7 +71,8 @@ Cris, an experienced Pilates teacher, decided to start selling Pilates professio
     18. As a user, I want to modify an existing order so that I can correct any mistakes.
     19. As a user, I want a contact form so that I can message the staff via email.
     20. As a user, I want to know how many products are left in stock so that I can quickly purchase items almost out of stock.
-    21. As a user, I want to quickly login using my social media account, so that I don't have to enter login details manually.  
+    21. As a user, I want to quickly login using my social media account, so that I don't have to enter login details manually. 
+    22. As a user, I want to add, edit products in my bag so that I can purchase what I want. 
 
 #### As a returning website user I want:
     22. As a returning user, I want to view my order history so that I can keep track of my purchases and invoices.

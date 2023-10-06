@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="card col-lg-4 col-md-6 col-sm-12 mx-auto my-5 text-center">
+        <div class="card-header"></div>
+        <div class="card-body">
+            <h2 class="logo-font mb-4">Tell us what you think!</h2>
+            <h5 class="mb-4">Rate this product</h5>
+            <form method="POST" action="{% url 'rate_product' product.id %}">
+                {% csrf_token %}
+                {{ rate_form | crispy }}
+                <div class="text-right">
+                    <a class="btn btn-danger text-white" href="{% url 'product_detail' product.id %}">Cancel</a>
+                    <button class="btn btn-warning" type="submit">Rate Product</button>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer"></div>
+    </div>
+{% endblock %}

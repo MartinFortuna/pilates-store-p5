@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.db.models import Avg, Value, FloatField
 from django.db.models.functions import Coalesce
 from django.db.models import Q
 from django.contrib import messages
 from django.db.models import Sum
+from products.forms import RateProductForm
 
 from products.models import Product, RateProduct, CategoryProduct, InventoryProduct
 
@@ -87,4 +88,27 @@ def product_detail(request, product_id):
 
     template = 'products/product_detail.html'
 
+    return render(request, template, context)
+
+
+@login_required
+def rate_product(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        rate_form = RateProductForm(request.POST)
+        if rate_form.is_valid():
+            rate_product = rate_form.save(commit=False)
+            rate_product.user = request.user
+            rate_product.product = product
+            rate_product.save()
+            return redirect('product_detail', product_id=product.id)
+    else:
+        rate_form = RateProductForm()
+
+    context = {
+        'product': product,
+        'rate_form': rate_form,
+    }
+
+    template = 'products/rate_product.html'
     return render(request, template, context)
