@@ -104,3 +104,14 @@ footer {
     width: 100%;
     margin-left: 1rem;
   }
+
+
+  @media (max-width: 400px) {
+    .product_img {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+    .card-body {
+      flex-direction: column-reverse;
+    }
+  }

@@ -1,0 +1,29 @@
+<script>
+    document.querySelectorAll('form').forEach((form) => {
+        const quantityInput = form.querySelector('input[class="item-quantity"]');
+        const addButtons = form.querySelectorAll('input[data-item-add]');
+        const removeButtons = form.querySelectorAll('input[data-item-remove]');
+
+        addButtons.forEach((addButton) => {
+            addButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                let quantity = Number(quantityInput.value) + 1;
+                if (quantity <= 0) {
+                    quantity = 1;
+                }
+                quantityInput.value = quantity;
+            });
+        });
+
+        removeButtons.forEach((removeButton) => {
+            removeButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                let quantity = Number(quantityInput.value) - 1;
+                if (quantity <= 0) {
+                    quantity = 1;
+                }
+                quantityInput.value = quantity;
+            });
+        });
+    });
+</script>

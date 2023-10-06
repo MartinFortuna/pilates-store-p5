@@ -1,45 +1,44 @@
 {% extends 'base.html' %}
 {% block content%}
-<div class="row mx-auto">
+<div class="row justify-content-center">
     <div class="text-center my-5">
         <h3><strong>Shopping bag</strong></h3>
     </div>
-    <div class="col-lg-7  p-0 mx-lg-2">
+    <div class="col-10 col-sm-6 col-md-3 p-0 mx-lg-2 mb-3">
         <div class="card">
             <div class="card-header"></div>
             {% if bag_items %}
             {% for item in bag_items %}
-                <div class="card-body">
-                    <img src="{{ item.product.image.url }}" height="150px" width="150px" class="me-3">
-                    <div>
-                        <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+            <div class="card-body border-bottom border-warning">
+                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="me-3 w-100">
+                <div class="text-center mt-2">
+                    <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                    {% if item.size %}
+                    <p>Size: {{ item.size }}</p>
+                    {% endif %}
+                    <form method="POST" action="#">
+                        {% csrf_token %}
                         {% if item.size %}
-                        <p>Size: {{ item.size }}</p>
+                        <input type="hidden" name="size" value="{{ item.size }}">
                         {% endif %}
-                        <form method="POST" action="{% url 'update_bag' item.product.id %}"
-                            class="d-flex align-items-center">
-                            {% csrf_token %}
-                            {% if item.size %}
-                            <input type="hidden" name="size" value="{{ item.size }}">
-                            {% endif %}
-                            <input type="button" data-item-remove="item-remove" value="-">
-                            <input class="item-quantity" name="quantity" type="number" value="{{ item.quantity }}"
-                                min="1" max="99">
-                            <input type="button" data-item-add="item-add" value="+">
-                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                            <button class="btn btn-warning ms-2" type="submit">Update</button>
-                        </form>
-                        <p>Price: {{ item.product.price }}</p>
-                        <p>Subtotal: €{{ item.product.price}}</p>
-                        <form method="POST" action="{% url 'remove_from_bag' item.product.id %}" class="mt-2">
-                            {% csrf_token %}
-                            <input type="hidden" name="size" value="{{ item.size}}">
-                            <input type="hidden" name="quantity" value="{{ item.quantity }}">
-                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                            <button class="btn btn-warning" type="submit">Remove</button>
-                        </form>
-                    </div>
+                        <input type="button" data-item-remove="item-remove" value="-">
+                        <input class="item-quantity" name="quantity" type="number" value="{{ item.quantity }}" min="1"
+                            max="99">
+                        <input type="button" data-item-add="item-add" value="+">
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                        <button class="btn btn-warning ms-2" type="submit">Update</button>
+                    </form>
+                    <p>Price: {{ item.product.price }}</p>
+                    <p>Subtotal: €{{ item.product.price}}</p>
+                    <form method="POST" action="#" class="mt-2">
+                        {% csrf_token %}
+                        <input type="hidden" name="size" value="{{ item.size}}">
+                        <input type="hidden" name="quantity" value="{{ item.quantity }}">
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                        <button class="btn btn-warning" type="submit">Remove</button>
+                    </form>
                 </div>
+            </div>
             {% endfor %}
             {% else %}
             <p class="text-center my-5">No products in your bag yet!</p>
@@ -47,66 +46,39 @@
             <div class="card-footer"></div>
         </div>
     </div>
-    <div class="card col-lg-4 text-center p-0 mx-lg-2">
+    <div class="col-10 col-sm-6 col-md-3 text-center p-0 mx-lg-2">
         <div class="card-header"></div>
-            <div class="card-body">
-                <h6><strong>Bag Total: €{{ total|floatformat:2 }}</strong></h6>
-                {% if delivery != 0 %}
-                <h6>Delivery: {{ delivery_display }}</h6>
-                {% elif delivery_display == "Free Delivery" %}
-                <h6>Delivery: <strong class="text-warning">{{ delivery_display }}</strong></h6>
-                {% endif %}
-                <h5 class="mt-4"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></h5>
-                {% if free_delivery_delta > 0 %}
-                <p class="text-warning">
-                    You could get free delivery by spending just <strong>€{{ free_delivery_delta }}</strong> more!
-                </p>
-                {% endif %}
+        <div class="card-body">
+            <h6><strong>Bag Total: €{{ total|floatformat:2 }}</strong></h6>
+            {% if delivery != 0 %}
+            <h6>Delivery: {{ delivery_display }}</h6>
+            {% elif delivery_display == "Free Delivery" %}
+            <h6>Delivery: <strong class="text-warning">{{ delivery_display }}</strong></h6>
+            {% endif %}
+            <h5 class="mt-4"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></h5>
+            {% if free_delivery_delta > 0 %}
+            <p class="text-warning">
+                You could get free delivery by spending just <strong>€{{ free_delivery_delta }}</strong> more!
+            </p>
+            {% endif %}
 
-                <a href="#" class="btn btn-warning mt-3">
-                    <span class="text-uppercase">Secure Checkout</span>
-                    <span class="icon">
-                        <i class="fas fa-lock"></i>
-                    </span>
-                </a>
-                <a href="{% url 'products' %}" class="btn btn-outline-black mt-3">
-                    <span class="icon">
-                        <i class="fas fa-chevron-left"></i>
-                    </span>
-                    <span class="font-weight-bold">Keep Shopping</span>
-                </a>
-            </div>
+            <a href="#" class="btn btn-warning mt-3">
+                <span class="text-uppercase">Secure Checkout</span>
+                <span class="icon">
+                    <i class="fas fa-lock"></i>
+                </span>
+            </a>
+            <a href="{% url 'products' %}" class="btn btn-outline-black mt-3">
+                <span class="icon">
+                    <i class="fas fa-chevron-left"></i>
+                </span>
+                <span class="font-weight-bold">Keep Shopping</span>
+            </a>
+        </div>
         <div class="card-footer"></div>
     </div>
 </div>
 {% endblock %}
-
-<script>
-    document.querySelectorAll('form').forEach((form) => {
-        const quantityInput = form.querySelector('input[class="item-quantity"]');
-        const addButtons = form.querySelectorAll('input[data-item-add]');
-        const removeButtons = form.querySelectorAll('input[data-item-remove]');
-
-        addButtons.forEach((addButton) => {
-            addButton.addEventListener('click', (event) => {
-                event.preventDefault();
-                let quantity = Number(quantityInput.value) + 1;
-                if (quantity <= 0) {
-                    quantity = 1;
-                }
-                quantityInput.value = quantity;
-            });
-        });
-
-        removeButtons.forEach((removeButton) => {
-            removeButton.addEventListener('click', (event) => {
-                event.preventDefault();
-                let quantity = Number(quantityInput.value) - 1;
-                if (quantity <= 0) {
-                    quantity = 1;
-                }
-                quantityInput.value = quantity;
-            });
-        });
-    });
-</script>
+{% block postloadjs %}
+{% include 'includes/quantity_input_script.html' %}
+{% endblock %}
