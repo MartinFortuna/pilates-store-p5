@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load bag_tools %}
+
 {% block content%}
 <div class="row justify-content-center">
     <div class="text-center my-5">
@@ -29,7 +31,7 @@
                         <button class="btn btn-warning ms-2" type="submit">Update</button>
                     </form>
                     <p>Price: {{ item.product.price }}</p>
-                    <p>Subtotal: €{{ item.product.price}}</p>
+                    <p>Subtotal: €{{ item.product.price | calc_subtotal:item.quantity }}</p>
                     <form method="POST" action="#" class="mt-2">
                         {% csrf_token %}
                         <input type="hidden" name="size" value="{{ item.size}}">

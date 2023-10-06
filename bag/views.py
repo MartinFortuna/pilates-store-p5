@@ -5,10 +5,12 @@ from django.contrib import messages
 
 # Create your views here.
 
+
 @login_required
 def view_bag(request):
     """ Returns bag page """
     return render(request, 'bag/bag.html')
+
 
 @login_required
 def add_to_bag(request, item_id):
