@@ -4,8 +4,9 @@ from django.db.models import Avg, Value, FloatField
 from django.db.models.functions import Coalesce
 from django.db.models import Q
 from django.contrib import messages
+from django.db.models import Sum
 
-from products.models import Product, RateProduct, CategoryProduct
+from products.models import Product, RateProduct, CategoryProduct, InventoryProduct
 
 # Create your views here.
 
@@ -65,4 +66,25 @@ def all_products(request):
     }
 
     template = 'products/products.html'
+    return render(request, template, context)
+
+
+@login_required
+def product_detail(request, product_id):
+    """Show Product details"""
+
+    product = Product.objects.filter(pk=product_id).annotate(
+        avg_rating=Coalesce(Avg('rateproduct__rate'), Value(0), output_field=FloatField())
+    ).first()
+    inventory_items = InventoryProduct.objects.filter(id_product=product)
+    sizes = [item.id_size for item in inventory_items if item.id_size]
+    product_inventory_size = InventoryProduct.objects.filter(id_product=product).values('id_size__size').annotate(total=Sum('quantity'))
+    context = {
+        'product': product,
+        'sizes': sizes,
+        'product_inventory_size': product_inventory_size,
+    }
+
+    template = 'products/product_detail.html'
+
     return render(request, template, context)

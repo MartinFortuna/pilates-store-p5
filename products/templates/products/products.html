@@ -1,24 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 {% include 'includes/page_header.html' %}
-    <div class="container-fluid col-11 mx-auto my-3">
+    <div class="card container-fluid col-11 mx-auto my-3">
         <div class="row text-center">
             <p class="text-danger mt-3">
                 <strong>We only ship within Ireland, Free delivery on orders over €!</strong>
             </p>
         </div>
-        <div class="row">
+        <div class="card-header"></div>
+        <div class="card-body row">
             {% for product in products %}
                 <div class="col-xl-3 col-sm-4 col-lg-4 border">
-                    <a href="#">
+                    <a href="{% url 'product_detail' product.id %}">
                         <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                         <p class="text-center"><strong>{{ product.name }}</strong></p>
                         <p><strong>€{{ product.price }}</strong></p>
                         {% if product.category_id %}
                         <p class="mt-1">
-                            <a href="#">
-                                <i class="fas fa-tag mr-1"></i>{{ product.category_id.name }}
-                            </a>
+                            <i class="fas fa-tag mr-1"></i>{{ product.category_id.name }}
                         </p>
                         {% endif %}
                         {% if product.avg_rating %}
@@ -29,6 +28,7 @@
                     </a>
                 </div>
             {% endfor %}
-        </div>
+        </div>    
+        <div class="card-footer"></div>
     </div>
 {% endblock %}
