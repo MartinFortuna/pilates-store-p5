@@ -12,7 +12,7 @@ from bag.contexts import bag_contents
 
 import stripe
 import json
-from django.middleware.csrf import get_token
+from django.views.decorators.csrf import requires_csrf_token
 
 # Create your views here.
 
