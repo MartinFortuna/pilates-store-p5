@@ -35,7 +35,28 @@
         </button>
         <div class="collapse" id="collapse-oders">
             <div class="card-body">
-            <p>Order: 145587921</p>
+                {% for order in orders %}
+                <div class="order-history table-responsive">
+                  <table class="table table-sm table-borderless">
+                      <thead>
+                          <tr>
+                              <th>Order Number</th>
+                              <th>Date</th>
+                              <th>Order Total</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                              <tr>
+                                  <td>
+                                      <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">{{ order.order_number|truncatechars:6 }}</a>
+                                  </td>
+                                  <td>{{ order.date|date:"Y-m-d"}}</td>
+                                  <td>${{ order.grand_total }}</td>
+                              </tr>
+                      </tbody>
+                  </table>
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

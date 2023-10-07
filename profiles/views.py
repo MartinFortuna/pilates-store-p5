@@ -27,6 +27,28 @@ def user_profile(request):
 
 
 @login_required
+def order_history(request, order_number):
+    # Bug here, function not being called. 
+    print("Inside order_history view")
+    order = get_object_or_404(Order, order_number=order_number)
+    user_details = order.user.userdetails_set.first()
+
+    messages.info(request, (
+        f'This is a past confirmation for order number {order_number}.'
+        'A confirmation email was sent on order date'
+    ))
+
+    template - 'checkout/checkout_success.html'
+    context = {
+        'order': order,
+        'user_details': user_details,
+        'from_userserfile': True,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
 def update_profile(request):
     """ Updates the profile info"""
     user = request.user
