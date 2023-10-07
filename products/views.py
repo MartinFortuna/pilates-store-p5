@@ -5,7 +5,7 @@ from django.db.models.functions import Coalesce
 from django.db.models import Q
 from django.contrib import messages
 from django.db.models import Sum
-from products.forms import RateProductForm
+from products.forms import RateProductForm, ProductForm, InventoryProductForm
 
 from products.models import Product, RateProduct, CategoryProduct, InventoryProduct
 
@@ -111,4 +111,36 @@ def rate_product(request, product_id):
     }
 
     template = 'products/rate_product.html'
+    return render(request, template, context)
+
+
+@login_required
+def add_product(request):
+    """ Add a product, admin only feature"""
+    if not request.user.is_superuser:
+        messages.error(request, 'You cannot access this page')
+        return redirect(reverse('home'))
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        inventory_form = InventoryProductForm(request.POST)
+        if form.is_valid() and inventory_form.is_valid():
+            product = form.save()
+            inventory = inventory_form.save(commit=False)
+            inventory.id_product = product
+            inventory.save()
+            messages.success(request, 'Successfully added product!')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, 'Product not added. Please check your form')
+    else:
+        form = ProductForm()
+        inventory_form = InventoryProductForm()
+
+    context = {
+        'form': form,
+        'inventory_form': inventory_form,
+    }
+
+    template = 'products/add_product.html'
     return render(request, template, context)

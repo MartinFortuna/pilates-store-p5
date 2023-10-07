@@ -25,7 +25,7 @@
                         <ul class="dropdown-menu text-center dropdown-menu-right" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
                             {% if request.user.is_superuser %}
-                            <li><a href="#" class="dropdown-item">Product Management</a></li>
+                            <li><a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
