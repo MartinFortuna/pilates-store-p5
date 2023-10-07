@@ -30,10 +30,12 @@
                 <p class="mt-3">{{ product.description }}</p>
                 {% if request.user.is_superuser %}
                 <a class="btn btn-warning" href="{% url 'update_product' product.id %}">Edit</a>
-                <a class="btn btn-danger text-white" href="#">Delete</a>
+                <a class="btn btn-danger text-white" href="{% url 'delete_product' product.id %}">Delete</a>
                 {% endif %}
                 {% for inventory in product_inventory_size %}
-                {% if inventory.id_size__size == None %}
+                {% if inventory.total == 0 %}
+                <div class="mt-2">Out of Stock!</div>
+                {% elif inventory.id_size__size == None %}
                 <p class="mt-2">Only {{ inventory.total }} items left in stock!</p>
                 {% else %}
                 <p class="mt-2">Only {{ inventory.total }} items in size {{ inventory.id_size__size }} left in stock!
