@@ -39,7 +39,7 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <li>
-                                <p>Logged as <span class="text-warning">{{ user.username }}</span><strong class="text-warning"></strong></p>
+                                <p>Logged as <strong class="text-warning">{{ user.username }}</strong></p>
                             </li>
                             {% else %}
                             <li><a href="{% url 'account_login' %}" class="dropdown-item">Login</a></li>

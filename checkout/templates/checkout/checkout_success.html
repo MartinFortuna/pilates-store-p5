@@ -4,7 +4,7 @@
 <div class="container align-items-center">
     <div class="row text-center mt-4">
         <h2 class="logo-font mb-4">Thank You <span class="text-warning">{{order.user.username}}</span>!</h2>
-            <p class="text-black">Your order information is below. A confirmation email was sent to
+        <p class="text-black">Your order information is below. A confirmation email was sent to
             <strong>{{ order.user.email }}</strong>.</p>
     </div>
     <div class="col-lg-6 text-center mx-auto">
@@ -16,16 +16,17 @@
                 <p><strong>Order number:</strong>{{order.order_number}}</p>
                 <p><strong>Date:</strong>{{order.date}}</p>
                 <hr>
-                <h5 class="mb-4"><strong>Delivery details:</strong></h5>                
+                <h5 class="mb-4"><strong>Delivery details:</strong></h5>
                 <p>First name: {{ order.user.first_name }}</p>
                 <p>Last name: {{ order.user.last_name }}</p>
-                <span>
+                <div>
                     {{ order.shipping_details_html|safe }}
-                </span>
+                </div>
                 <hr>
                 <h5 class="mb-4"><strong>Products:</strong></h5>
                 {% for item in order.orderitems.all %}
-                <p>{{ item.quantity }} "{{ item.product.name }}" {% if item.size %} - Size {{ item.size }}{% endif %} for €{{ item.product.price}} each</p>
+                <p>{{ item.quantity }} "{{ item.product.name }}" {% if item.size %} - Size {{ item.size }}{% endif %}
+                    for €{{ item.product.price}} each</p>
                 <hr class="col-4 mx-auto">
                 {% endfor %}
                 <hr>
@@ -47,5 +48,6 @@
             </a>
         </div>
         {% endif %}
+    </div>
 </div>
 {% endblock %}
