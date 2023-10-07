@@ -1,0 +1,16 @@
+Hello {{order.user.username}}!
+
+We confirm that your order was received at Pilates with Chris and that your payment was successfull!
+
+Order Number: {{ order.order_number}}
+
+Grand_total: {{ order.grand_total}}
+
+Login to check your order history and delivery details.
+
+Here's our customer service email if needed: {{contact_email}}
+
+Thank you!
+
+Regards, 
+The Pilates with Chris staff. 

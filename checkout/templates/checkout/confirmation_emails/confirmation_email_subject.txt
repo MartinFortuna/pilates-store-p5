@@ -1,0 +1,1 @@
+Pilates with Chris Order Confimation, here's your order number: {{ order.order_number}}

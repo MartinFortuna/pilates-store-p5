@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
+from django.core.mail import send_mail
 from django.conf import settings
+from django.template.loader import render_to_string
 
 from .forms import CheckoutForm
 from profiles.models import User, UserDetail
@@ -125,6 +127,22 @@ def checkout(request):
                                 quantity=quantity,
                             )
                             orderitems.save()
+
+                customer_email = order.user.email
+                # user_details = order.user.userdetail_set.first() // Mofidy the emails, remove user_details and use order. 
+                subject = render_to_string(
+                    'checkout/confirmation_emails/confirmation_email_subject.txt',
+                    {'order': order})
+                body = render_to_string(
+                    'checkout/confirmation_emails/confirmation_email_body.txt',
+                    {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+
+                send_mail(
+                    subject,
+                    body,
+                    settings.DEFAULT_FROM_EMAIL,
+                    [customer_email]
+                )
 
                 return redirect(reverse('checkout_success', args=[order.order_number]))
             else:

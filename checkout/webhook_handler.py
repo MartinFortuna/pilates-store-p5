@@ -1,6 +1,4 @@
 from django.http import HttpResponse
-from django.core.mail import send_mail
-from django.template.loader import render_to_string
 from django.conf import settings
 
 from .models import Order, OrderItem
@@ -20,24 +18,6 @@ class StripeWH_Handler:
     def __init__(self, request):
         self.request = request
 
-    def _send_confirmation_email(self, order):
-        """Send the user a confirmation email"""
-        customer_email = order.user.email
-        # user_details = order.user.userdetail_set.first() // Mofidy the emails, remove user_details and use order. 
-        subject = render_to_string(
-            'checkout/confirmation_emails/confirmation_email_subject.txt',
-            {'order': order})
-        body = render_to_string(
-            'checkout/confirmation_emails/confirmation_email_body.txt',
-            {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
-
-        send_mail(
-            subject,
-            body,
-            settings.DEFAULT_FROM_EMAIL,
-            [customer_email]
-        )
-
     def handle_event(self, event):
         """
         Handle a generic/unknown/unexpected webhook event
@@ -53,7 +33,6 @@ class StripeWH_Handler:
         intent = event.data.object
         pid = intent.id
         bag = intent.metadata.bag
-        save_info = intent.metadata.save_info
 
         stripe_charge = stripe.Charge.retrieve(
             intent.latest_charge
