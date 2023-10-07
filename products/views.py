@@ -7,9 +7,15 @@ from django.contrib import messages
 from django.db.models import Sum
 from products.forms import RateProductForm, ProductForm, InventoryProductForm
 
-from products.models import Product, RateProduct, CategoryProduct, InventoryProduct
+from products.models import (
+    Product,
+    RateProduct,
+    CategoryProduct,
+    InventoryProduct,
+)
 
 # Create your views here.
+
 
 @login_required
 def all_products(request):
@@ -144,3 +150,48 @@ def add_product(request):
 
     template = 'products/add_product.html'
     return render(request, template, context)
+
+
+@login_required
+def update_product(request, product_id):
+    """ Edit a product in the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'You cannot access this page')
+        return redirect(reverse('home'))
+
+    product = get_object_or_404(Product, pk=product_id)
+    inventory_form = None
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        size_id = request.POST.get('id_size')
+
+        try:
+            if size_id:
+                inventory = InventoryProduct.objects.get(id_product=product, id_size=size_id)
+                inventory_form = InventoryProductForm(request.POST, instance=inventory)
+            else:
+                inventory, created = InventoryProduct.objects.get_or_create(id_product=product, id_size=None)
+                inventory_form = InventoryProductForm(request.POST, instance=inventory)
+
+            if form.is_valid() and inventory_form.is_valid():
+                form.save()
+                inventory_form.save()
+                messages.success(request, 'Successfully updated product!')
+                return redirect(reverse('product_detail', args=[product.id]))
+            else:
+                messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+        except InventoryProduct.DoesNotExist:
+            messages.error(request, 'Please enter the correct size')
+            inventory_form = InventoryProductForm()
+    else:
+        form = ProductForm(instance=product)
+        inventory_form = InventoryProductForm()
+        messages.info(request, f'You are editing {product.name}')
+
+    context = {
+        'form': form,
+        'product': product,
+        'inventory_form': inventory_form,
+    }
+
+    return render(request, 'products/update_product.html', context)
