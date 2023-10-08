@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /bag/
+Disallow: /bag/
+Sitemap: https://pilateswithchris-69f3cf5687b6.herokuapp.com/sitemap.xml
