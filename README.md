@@ -5,7 +5,7 @@
 
 
 Pilates with Chris is a Pilates one-stop shop fictional E-Commerce website for members only. 
-Cris, an experienced Pilates teacher, decided to start selling Pilates professional pilates equipment. Users can add products to their shopping cart, rate them, and pay securely with Stripe.
+Cris, an experienced Pilates teacher, decided to start selling Pilates professional Pilates equipment. Users can add products to their shopping cart, rate them, and pay securely with Stripe.
 
 ## Project Goals
 
@@ -18,7 +18,7 @@ Cris, an experienced Pilates teacher, decided to start selling Pilates professio
 - Offer a range of exercise clothing and gear, leading to higher customer satisfaction and repeat business rate. 
 
 ### **Target Market**
-- The main target audience will be B2B Focused, but B2C as a secondary audience.
+- The main target audience will be B2B-focused, but B2C as a secondary audience.
 - Focused target market strategy, warehouse in Ireland. 
 - All equipment sold is only deliverable in Ireland due to high shipment costs to other countries making products more expensive. 
 
@@ -37,7 +37,7 @@ Cris, an experienced Pilates teacher, decided to start selling Pilates professio
 
 ### Facebook Page
 
-- A facebook page will be//change once created// created to promote the website's content. 
+- A Facebook page will be//change once created// created to promote the website's content. 
 
 ## Agile Methodology
 
@@ -73,8 +73,8 @@ Kanban board here: [Kanban Board](https://github.com/users/MartinFortuna/project
     18. As a user, I want to modify an existing order so that I can correct any mistakes.
     19. As a user, I want a contact form so that I can message the staff via email.
     20. As a user, I want to know how many products are left in stock so that I can quickly purchase items almost out of stock.
-    21. As a user, I want to quickly login using my social media account, so that I don't have to enter login details manually. 
-    23. As a user, I want to add, edit products in my bag so that I can purchase what I want. 
+    21. As a user, I want to quickly log in using my social media account, so that I don't have to enter login details manually. 
+    23. As a user, I want to add and edit products in my bag so that I can purchase what I want. 
 
 #### As a returning website user I want:
     22. As a returning user, I want to view my order history so that I can keep track of my purchases and invoices.
@@ -82,7 +82,7 @@ Kanban board here: [Kanban Board](https://github.com/users/MartinFortuna/project
 
 ## Design
 
-The website is fully responsive and designed with an easy-access hamburger menu to make navigation intuitive on small to medium screens.I decided to use Bootstrap's light background along with its warning yellow across the website for consistency and pleasing colors. I've chosen to user Bootsrap5 card accross the website for clean visuals.
+The website is fully responsive and designed with an easy-access hamburger menu to make navigation intuitive on small to medium screens. I decided to use Bootstrap's light background along with its warning yellow across the website for consistency and pleasing colors. I've chosen to use Bootsrap5 card across the website for clean visuals.
 
 ![Pilates with Chris colors](docs/screenshots/design/color_paletter.png)
 
@@ -117,20 +117,20 @@ Home page design wireframe:
 
  ###  Home page
 
- - The home page was designed to be simpe with an about us section and a newsletter subscription feature along with nav bar and footer.
+ - The home page was designed to be simple with an about us section and a newsletter subscription feature along with a nav bar and footer.
 
 - ![Homepage](docs/screenshots/design/homepage.png)
 
  ###  Products page
 
- - The product's page is where users can see the product image, name, category and rating. It also has all related sorting and search functionnality.
+ - The product's page is where users can see the product image, name, category, and rating. It also has all related sorting and search functionality.
 
 - ![Homepage](docs/screenshots/design/products-page.png)
 
 
- ###  Products detail page
+ ### Product detail page
 
- - The product detail page also provides the user with a description, quantity input select, add to bag button and quantity in inventory. For super users, the ability to add or update a product. 
+ - The product detail page also provides the user with a description, quantity input selection, add to bag button, and quantity in inventory. For super users, the ability to add or update a product. 
 
   ###  Rate page
 
@@ -140,14 +140,14 @@ Home page design wireframe:
 
  ###  Bag page
 
- - The user can update or remove an item from the back, keep shopping or checkout.  
+ - The user can update or remove an item from the back, keep shopping, or checkout.  
 
 - ![Homepage](docs/screenshots/design/shopping-bag.png)
 
 
  ###  Checkout page
 
- - The user can see an order summary, checkout form and the secure payment with stripe. 
+ - The user can see an order summary, checkout form, and secure payment with Stripe. 
 
 - ![Homepage](docs/screenshots/design/checkout-page.png)
 
@@ -173,10 +173,10 @@ Home page design wireframe:
 
 ## Future Development
 
-- When product is purchased, the inventory quantity update. 
+- When a product is purchased, the inventory quantity is updated. 
 - Multiple colors for clothing. 
 - Shipment information and status.
-- Users can change information on orders pre shipping.
+- Users can change information on orders pre-shipping.
 - Webhooks and order placement via webhook if page closed post checkout. 
 
 - Due to time constraints, I would not be able to implement these features on submission time. 
@@ -185,8 +185,8 @@ Home page design wireframe:
 
 ### Solved Bugs:
 
-- The toasts were not appearing, a Boostrap class was creating the issue. I've fixed this by adding some style and javascript on the base.html.
-- ![Toasts](docs/screenshots/bugs/webhook_bug.png)
+- The toasts were not appearing, a Bootstrap class was creating the issue. I've fixed this by adding some style and JavaScript on the base.html.
+- ![Toasts](docs/screenshots/bugs/toast-bug.png)
 
 ### Unsolved Bugs:
 
@@ -202,13 +202,13 @@ Home page design wireframe:
 
 ### Python
 
-- I've run all Python files in all apps and root project, and no errors were found, only style issues shown by pycodestyle. I've corrected all those in one go as can be seen in my commit history.
-Unfortunately I could not fix one line in webhook_handler.py, as can be seen here:
-- ![Webhook_handker style error](docs/screenshots/bugs/webhook_bug.png)
+- I've run all Python files in all apps and root projects, and no errors were found, only style issues shown by pycodestyle. I've corrected all those in one go as can be seen in my commit history.
+Unfortunately, I could not fix one line in webhook_handler.py, as can be seen here:
+- ![Webhook_handker style error](docs/screenshots/bugs/checkout-webhook-handler.png)
 
 ### Javascript
 
-- I've ran my javascript files and only warnings for missing semicolons were shown, I've corrected it along with the python commit on styles. 
+- I've run my javascript files and only warnings for missing semicolons were shown, I've corrected it along with the Python commit on styles. 
 [JS Validator](https://jshint.com/ "JS Validator")
 
 ### CSS
@@ -216,6 +216,70 @@ Unfortunately I could not fix one line in webhook_handler.py, as can be seen her
 - I've run the only CSS file in the templates folder, and no errors are shown.
 [CSS Validator](https://jigsaw.w3.org/css-validator/ "CSS Validator")
 
+### Console
 
+- No errors were found in the console.
 
-
+## Manual testing
+    - All tests below passed:
+        - Feedback messages:
+            - Almost all user actions have meaningful feedback messages, as intended.
+        - Navbar
+            - Unauthenticated user:
+                - The logo brings the user to the home page as intended.
+                - Boutique brings users to the login page as intended. 
+                - My account, shows login, and logout as intended. 
+            - Authenticated regular user:
+                - Boutique brings the user to the products page as intended. 
+                - My account shows My profile, Logout, Logged as, as intended. 
+                - My Profile brings the user to the profile page as intended. 
+                - Logout brings user the to the logout page, as intended. 
+            - Authenticated superuser:
+                - My account shows Product Management, My Profile, Logout, and logged as, as intended. 
+                - Product management, brings the user to the Add a Product view, as intended. 
+                - My Profile brings the user to the profile page as intended. 
+                - Logout brings user the to the logout page, as intended. 
+        - Home page
+            - All users:
+                - Subscribe correctly works as intended at the time of this test, please note that MailChimp may deactivate the API if fake emails are entered.
+                - Unsubscribe brings the user to the Unsubscribe page as intended, unsubscribe works as intended. 
+        - Products page
+            - Shows all products as intended. 
+            - Filter filters by price in ascending order as intended.
+            - Filter by rating filters in descending order as intended. 
+            - Filter all products and return all products as intended. 
+            - Filter Unisex works as intended.
+            - Filter Women works as intended. 
+            - Filter Men works as intended. 
+            - Filter Equipment works as intended. 
+            - Filter Gear works as intended.  
+            - The search bar works as intended when searching for existing products.
+            - If nothing matches the search criteria, or no search criteria is entered, an error message is displayed as intended and the user returns to the products page. 
+            - The shopping cart Icon brings the user to the Shopping Bag page, as intended.
+            - If the product is clicked, brings the user the the product detail page as intended. 
+        - Product Detail page
+            - Shows image, product name, price, category, rating, description, and quantity in stock as intended. 
+            - Shows - and + inputs as well as size. Quantity < 1 and > 100 cannot be added to the bag, works as intended. 
+            - Add to bag, per size and quantity works as intended. 
+            - Keep shopping, works as intended. 
+            - If a category is clicked, bring users to the products page showing all items of the selected category, which works as intended. 
+            - If the image is clicked, brings the user to another page with a bigger picture, and works as intended.
+            - If the rate this product is clicked brings the user the the rate product page, which works as intended.
+            - Bag updates total if add to bag is clicked, works as intended.
+            - If the user re-clicks on the add to bag, the quantity is added the the bag's current quantity, which works as intended.
+        - Bag page 
+            - If the shopping bag is empty, it displays No products in your bag yet! works as intended.
+            - Bag display total and free delivery delta, works as intended.
+            - Keep shopping brings the user to the products page, and works as intended.
+            - Secure checkout redirects to the checkout page and works as intended. 
+                - If an item is in the bag:
+                    - The user can update the quantity, works as intended.
+                    - Subtotal is shown as intended. 
+                    - The user can remove the product from the bag, works as intended. 
+        - Checkout page
+            - The checkout form is prepopulated with the user information captured on account creation and works as intended.
+            - User can add or edit checkout form, works as intended. 
+            - Order summary shows items in the bag, their subtotal, total, and delivery delta, as intended.
+            - The button to adjust the bag returns the user to the bag page, and works as intended. 
+            - Checkout card details correctly return validation errors, as intended.
+            - Displays the amount to be charged, as intended.
