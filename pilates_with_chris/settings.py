@@ -30,7 +30,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['pilateswithchris-69f3cf5687b6.herokuapp.com', 'localhost', '8000-martinfortu-pilatesstor-ln14az9s3j8.ws-eu105.gitpod.io']
 
