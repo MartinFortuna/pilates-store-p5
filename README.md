@@ -1,4 +1,4 @@
-# Pilates with Chris
+# [Pilates with Chris](https://pilateswithchris-69f3cf5687b6.herokuapp.com/)
 
 
 ## Overview
@@ -42,6 +42,8 @@ Cris, an experienced Pilates teacher, decided to start selling Pilates professio
 ## Agile Methodology
 
 - The development phase was applied with Agile methodologies to deliver small features with efficiency and maintain hypothetical business value. User stories were prioritized according to the MoSCoW method to deliver the primarily needed functionalities first.
+
+Kanban board here: [Kanban Board](https://github.com/users/MartinFortuna/projects/7)
 
 ### User Stories
 
@@ -110,3 +112,10 @@ Home page design wireframe:
 
 ![Database diagram](docs/screenshots/DrawSQL-Database-Diagram.png)
 
+
+## Features
+
+ - Home page
+ - The home page was designed to be simpe with an about us section and a newsletter subscription feature along with nav bar and footer.
+
+- ![Homepage](docs/screenshots/homepage.png)
