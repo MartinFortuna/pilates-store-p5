@@ -59,6 +59,8 @@ form.addEventListener('submit', function(ev) {
         'client_secret': clientSecret,
     };
     var url = '/checkout/cache_checkout_data/';
+    console.log(csrfToken)
+    console.log(postData)
 
     $.post(url, postData).done(function () {
         stripe.confirmCardPayment(clientSecret, {
@@ -85,7 +87,7 @@ form.addEventListener('submit', function(ev) {
                     city: $.trim(form.city.value),
                     state: $.trim(form.county.value),
                     postal_code: $.trim(form.postal_code.value),
-                }
+                },
             },
         }).then(function(result) {
             if (result.error) {
