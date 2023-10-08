@@ -82,40 +82,89 @@ Kanban board here: [Kanban Board](https://github.com/users/MartinFortuna/project
 
 ## Design
 
-The website is fully responsive and designed with an easy-access hamburger menu to make navigation intuitive on small to medium screens.I decided to use Bootstrap's light background along with its warning yellow across the website for consistency and pleasing colors.
+The website is fully responsive and designed with an easy-access hamburger menu to make navigation intuitive on small to medium screens.I decided to use Bootstrap's light background along with its warning yellow across the website for consistency and pleasing colors. I've chosen to user Bootsrap5 card accross the website for clean visuals.
 
-![Pilates with Chris colors](docs/screenshots/color_paletter.png)
+![Pilates with Chris colors](docs/screenshots/design/color_paletter.png)
 
 ### App Structure
 
 - Non-authenticated user Flow:
 
-![Non authenticated user](docs/screenshots/non-authenticated-users-flow.png)
+![Non authenticated user](docs/screenshots/design/non-authenticated-users-flow.png)
 
 - Authenticated regular user Flow:
 
-![Authenticated regular user](docs/screenshots/authenticated-regular-user.png)
+![Authenticated regular user](docs/screenshots/design/authenticated-regular-user.png)
 
 - Authenticated admin user Flow:
 
-![Authenticated admin user](docs/screenshots/authenticated-admin-user.png)
+![Authenticated admin user](docs/screenshots/design/authenticated-admin-user.png)
 
 ### Wireframe:
 
 Home page design wireframe:
 
-![Home](docs/screenshots/home-page.png)
+![Home](docs/screenshots/design/home-page.png)
 
 ### Data Schema:
 
 - Relational Model - User (Allauth), User Details, Product, Product Rate, Category, Product Size, Inventory, Order, Order Item.
 
-![Database diagram](docs/screenshots/DrawSQL-Database-Diagram.png)
+![Database diagram](docs/screenshots/design/DrawSQL-Database-Diagram.png)
 
 
 ## Features
 
- - Home page
+ ###  Home page
+
  - The home page was designed to be simpe with an about us section and a newsletter subscription feature along with nav bar and footer.
 
-- ![Homepage](docs/screenshots/homepage.png)
+- ![Homepage](docs/screenshots/design/homepage.png)
+
+ ###  Products page
+
+ - The product's page is where users can see the product image, name, category and rating. It also has all related sorting and search functionnality.
+
+- ![Homepage](docs/screenshots/design/products-page.png)
+
+
+ ###  Products detail page
+
+ - The product detail page also provides the user with a description, quantity input select, add to bag button and quantity in inventory. For super users, the ability to add or update a product. 
+
+  ###  Rate page
+
+ - The user can rate the product.
+
+- ![Homepage](docs/screenshots/design/rate-page.png)
+
+ ###  Bag page
+
+ - The user can update or remove an item from the back, keep shopping or checkout.  
+
+- ![Homepage](docs/screenshots/design/shopping-bag.png)
+
+
+ ###  Checkout page
+
+ - The user can see an order summary, checkout form and the secure payment with stripe. 
+
+- ![Homepage](docs/screenshots/design/checkout-page.png)
+
+ ###  Checkout success page
+
+ - The user can see an order confirmation. 
+
+- ![Homepage](docs/screenshots/design/checkout-success-page.png)
+
+###  Profile page
+
+ - The user can personal details, order history and reset password. 
+
+- ![Homepage](docs/screenshots/design/profile-page.png)
+
+###  Product management pages
+
+ - The admin user has access to create and edit products, via the corresponding form, here's the add product form. 
+
+- ![Homepage](docs/screenshots/design/product-manager.png)
