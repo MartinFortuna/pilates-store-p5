@@ -26,19 +26,36 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(upload_to='product_images/', null=True)
     image_url = models.CharField(max_length=255, null=True)
-    category_id = models.ForeignKey(CategoryProduct, on_delete=models.CASCADE, null=True)
+    category_id = models.ForeignKey(
+        CategoryProduct,
+        on_delete=models.CASCADE,
+        null=True
+    )
 
     def __str__(self):
-        return f"Product: {self.name} || Label: {self.label} || Price: {self.price} || {self.category_id}"
+        return (
+            f"Product: {self.name} || "
+            f"Label: {self.label} || "
+            f"Price: {self.price} || "
+            f"{self.category_id}"
+        )
 
 
 class InventoryProduct(models.Model):
     id_product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    id_size = models.ForeignKey(SizeProduct, on_delete=models.CASCADE, null=True)
-    quantity = models.PositiveIntegerField(null=True) 
+    id_size = models.ForeignKey(
+        SizeProduct,
+        on_delete=models.CASCADE,
+        null=True
+    )
+    quantity = models.PositiveIntegerField(null=True)
 
     def __str__(self):
-        return f"{self.id_product.name} || {self.id_size} || Quantity: {self.quantity}"
+        return (
+            f"{self.id_product.name} || "
+            f"{self.id_size} || "
+            f"Quantity: {self.quantity}"
+        )
 
 
 class RateProduct(models.Model):
@@ -48,4 +65,9 @@ class RateProduct(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Product: {self.product.name} || User: {self.user} || Rate: {self.rate} || Date: {self.date.strftime('%d/%m/%Y')}"
+        return (
+            f"Product: {self.product.name} || "
+            f"User: {self.user} || "
+            f"Rate: {self.rate} || "
+            f"Date: {self.date.strftime('%d/%m/%Y')}"
+        )

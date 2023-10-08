@@ -52,4 +52,11 @@ class UserForm(ModelForm):
 class UserProfileForm(ModelForm):
     class Meta:
         model = UserDetail
-        fields = ['telephone', 'address1', 'address2', 'postal_code', 'city', 'county']
+        fields = [
+            'telephone',
+            'address1',
+            'address2',
+            'postal_code',
+            'city',
+            'county'
+        ]

@@ -6,7 +6,15 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'label', 'description', 'price', 'image', 'image_url', 'category_id']
+        fields = [
+            'name',
+            'label',
+            'description',
+            'price',
+            'image',
+            'image_url',
+            'category_id',
+        ]
 
 
 class InventoryProductForm(forms.ModelForm):
@@ -20,7 +28,12 @@ class InventoryProductForm(forms.ModelForm):
 
 
 class RateProductForm(forms.ModelForm):
-    rate = forms.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    rate = forms.IntegerField(
+        validators=[
+            MinValueValidator(1),
+            MaxValueValidator(5)
+        ]
+    )
 
     class Meta:
         model = RateProduct

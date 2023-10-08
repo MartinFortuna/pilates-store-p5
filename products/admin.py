@@ -1,6 +1,12 @@
 from django.contrib import admin
 
-from .models import CategoryProduct, Product, SizeProduct, RateProduct, InventoryProduct
+from .models import (
+    CategoryProduct,
+    Product,
+    SizeProduct,
+    RateProduct,
+    InventoryProduct
+)
 
 # Register your models here.
 

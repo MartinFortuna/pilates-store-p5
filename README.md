@@ -168,3 +168,54 @@ Home page design wireframe:
  - The admin user has access to create and edit products, via the corresponding form, here's the add product form. 
 
 - ![Homepage](docs/screenshots/design/product-manager.png)
+
+
+
+## Future Development
+
+- When product is purchased, the inventory quantity update. 
+- Multiple colors for clothing. 
+- Shipment information and status.
+- Users can change information on orders pre shipping.
+- Webhooks and order placement via webhook if page closed post checkout. 
+
+- Due to time constraints, I would not be able to implement these features on submission time. 
+
+## Testing
+
+### Solved Bugs:
+
+- The toasts were not appearing, a Boostrap class was creating the issue. I've fixed this by adding some style and javascript on the base.html.
+- ![Toasts](docs/screenshots/bugs/webhook_bug.png)
+
+### Unsolved Bugs:
+
+- CSRF token not set error is triggered on the local environment when accessing the checkout page, this makes the webhook not fire. I've consulted with tutors, but no one was able to find the issue. The payment still successfully goes through but the webhook code implemented does not work due to this issue. There are no errors in the console on the live version, so I was advised to submit the project as is and mention it here. 
+- ![Webhook fail forbiden error](docs/screenshots/bugs/webhook_bug.png)
+
+## Code Validation
+
+### HTML
+
+- I've run all pages of the website through [HTML Validator](https://validator.w3.org/ "HTML Validator") with no errors.
+
+
+### Python
+
+- I've run all Python files in all apps and root project, and no errors were found, only style issues shown by pycodestyle. I've corrected all those in one go as can be seen in my commit history.
+Unfortunately I could not fix one line in webhook_handler.py, as can be seen here:
+- ![Webhook_handker style error](docs/screenshots/bugs/webhook_bug.png)
+
+### Javascript
+
+- I've ran my javascript files and only warnings for missing semicolons were shown, I've corrected it along with the python commit on styles. 
+[JS Validator](https://jshint.com/ "JS Validator")
+
+### CSS
+
+- I've run the only CSS file in the templates folder, and no errors are shown.
+[CSS Validator](https://jigsaw.w3.org/css-validator/ "CSS Validator")
+
+
+
+

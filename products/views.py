@@ -22,7 +22,11 @@ def all_products(request):
     """Show all products to authenticated users only
     including search and filtering features."""
     products = Product.objects.all().annotate(
-        avg_rating=Coalesce(Avg('rateproduct__rate'), Value(0), output_field=FloatField())
+        avg_rating=Coalesce(
+            Avg('rateproduct__rate'),
+            Value(0),
+            output_field=FloatField()
+        )
     )
     ratings = RateProduct.objects.all()
     query = None
@@ -36,10 +40,16 @@ def all_products(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(
+                    request,
+                    "You didn't enter any search criteria!"
+                )
                 return redirect(reverse('products'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = (
+                Q(name__icontains=query) |
+                Q(description__icontains=query)
+            )
             products = products.filter(queries)
 
         if not products.exists():
@@ -81,11 +91,22 @@ def product_detail(request, product_id):
     """Show Product details"""
 
     product = Product.objects.filter(pk=product_id).annotate(
-        avg_rating=Coalesce(Avg('rateproduct__rate'), Value(0), output_field=FloatField())
+        avg_rating=Coalesce(
+            Avg('rateproduct__rate'),
+            Value(0),
+            output_field=FloatField()
+        )
     ).first()
     inventory_items = InventoryProduct.objects.filter(id_product=product)
     sizes = [item.id_size for item in inventory_items if item.id_size]
-    product_inventory_size = InventoryProduct.objects.filter(id_product=product).values('id_size__size').annotate(total=Sum('quantity'))
+    product_inventory_size = InventoryProduct.objects.filter(
+        id_product=product
+    ).values(
+        'id_size__size'
+    ).annotate(
+        total=Sum('quantity')
+    )
+
     context = {
         'product': product,
         'sizes': sizes,
@@ -138,7 +159,10 @@ def add_product(request):
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Product not added. Please check your form')
+            messages.error(
+                request,
+                'Product not added. Please check your form'
+            )
     else:
         form = ProductForm()
         inventory_form = InventoryProductForm()
@@ -167,11 +191,23 @@ def update_product(request, product_id):
 
         try:
             if size_id:
-                inventory = InventoryProduct.objects.get(id_product=product, id_size=size_id)
-                inventory_form = InventoryProductForm(request.POST, instance=inventory)
+                inventory = InventoryProduct.objects.get(
+                    id_product=product,
+                    id_size=size_id
+                )
+                inventory_form = InventoryProductForm(
+                    request.POST,
+                    instance=inventory
+                )
             else:
-                inventory, created = InventoryProduct.objects.get_or_create(id_product=product, id_size=None)
-                inventory_form = InventoryProductForm(request.POST, instance=inventory)
+                inventory, created = InventoryProduct.objects.get_or_create(
+                    id_product=product,
+                    id_size=None
+                )
+                inventory_form = InventoryProductForm(
+                    request.POST,
+                    instance=inventory
+                )
 
             if form.is_valid() and inventory_form.is_valid():
                 form.save()
@@ -179,7 +215,13 @@ def update_product(request, product_id):
                 messages.success(request, 'Successfully updated product!')
                 return redirect(reverse('product_detail', args=[product.id]))
             else:
-                messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+                messages.error(
+                    request,
+                    (
+                        'Failed to update product. '
+                        'Please ensure the form is valid.'
+                    )
+                )
         except InventoryProduct.DoesNotExist:
             messages.error(request, 'Please enter the correct size')
             inventory_form = InventoryProductForm()

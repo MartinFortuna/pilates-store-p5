@@ -35,7 +35,10 @@ def bag_contents(request):
                 total += quantity * product.price
                 product_count += quantity
 
-    delivery_cost_percentage = Decimal(settings.STANDARD_DELIVERY_PERCENTAGE) / Decimal(100)
+    delivery_cost_percentage = (
+        Decimal(settings.STANDARD_DELIVERY_PERCENTAGE)
+        / Decimal(100)
+    )
     free_delivery_threshold = settings.FREE_DELIVERY_THRESHOLD
 
     if total < free_delivery_threshold:

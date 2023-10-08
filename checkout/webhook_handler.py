@@ -79,15 +79,35 @@ class StripeWH_Handler:
                 if order_exists:
                     self._send_confirmation_email(order)
                     return HttpResponse(
-                        content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
-                        status=200)
+                        content=(
+                            f'Webhook received: {event["type"]} | '
+                            f'SUCCESS: Verified order already in database'
+                        ),
+                        status=200
+                    )
                 else:
                     if not order_exists:
-                        shipping_details_html = f"<p>Telephone: {shipping_details.get('telephone')}</p>"
-                        shipping_details_html += f"<p>Address1: {shipping_details.get('address1')}</p>"
-                        shipping_details_html += f"<p>Address2: {shipping_details.get('address2')}</p>"
-                        shipping_details_html += f"<p>City: {shipping_details.get('city')}</p>"
-                        shipping_details_html += f"<p>County: {shipping_details.get('county')}</p>"
+                        shipping_details_html += (
+                            f"<p>Telephone: "
+                            f"{shipping_details.get('telephone')}</p>"
+                        )
+                        shipping_details_html += (
+                            f"<p>Address1: "
+                            f"{shipping_details.get('address1')}</p>"
+                        )
+                        shipping_details_html += (
+                            f"<p>Address2: "
+                            f"{shipping_details.get('address2')}</p>"
+                        )
+                        shipping_details_html += (
+                            f"<p>City: "
+                            f"{shipping_details.get('city')}</p>"
+                        )
+                        shipping_details_html += (
+                            f"<p>County: "
+                            f"{shipping_details.get('county')}</p>"
+                        )
+
                         order = Order.objects.create(
                             user=user,
                             shipping_details_html=shipping_details_html,
@@ -123,8 +143,12 @@ class StripeWH_Handler:
                     status=500)
             self._send_confirmation_email(order)
             return HttpResponse(
-                content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
-                status=200)
+                content=(
+                    f'Webhook received: {event["type"]} '
+                    f'| SUCCESS: Created order in webhook'
+                ),
+                status=200
+            )
 
     def handle_payment_intent_payment_failed(self, event):
         """

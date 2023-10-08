@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+
 class UserDetail(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     telephone = models.CharField(max_length=50, null=True)
@@ -13,4 +14,11 @@ class UserDetail(models.Model):
     county = models.CharField(max_length=50, null=True)
 
     def __str__(self):
-        return f"User: {self.user_id} || Telephone: {self.telephone} || Address1: {self.address1} || PostalCode: {self.postal_code} || City: {self.city} || County: {self.county}"
+        return (
+            f"User: {self.user_id} || "
+            f"Telephone: {self.telephone} || "
+            f"Address1: {self.address1} || "
+            f"PostalCode: {self.postal_code} || "
+            f"City: {self.city} || "
+            f"County: {self.county}"
+        )

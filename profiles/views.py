@@ -64,7 +64,10 @@ def update_profile(request):
             messages.success(request, 'Your profile was updated!')
             return HttpResponseRedirect(reverse('user_profile'))
         else:
-            messages.error(request, 'Your profile was not updated, check the form')
+            messages.error(
+                request,
+                'Your profile was not updated, check the form'
+            )
     else:
         user_form = UserForm(instance=user)
         profile_form = UserProfileForm(instance=profile)
@@ -76,6 +79,7 @@ def update_profile(request):
 
     template = 'profiles/update_profile.html'
     return render(request, template, context)
+
 
 @login_required
 def delete_profile(request):

@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404, HttpResponse
+)
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.core.mail import send_mail
@@ -45,7 +47,8 @@ def checkout(request):
         messages.error(request, "No products in your bag yet!")
         return redirect(reverse('products'))
     else:
-        user_details = UserDetail.objects.filter(user_id=request.user.id).first()
+        user_details = UserDetail.objects.filter(
+            user_id=request.user.id).first()
         if user_details is not None:
             initial_data = {
                 'username': request.user.username,
@@ -91,18 +94,33 @@ def checkout(request):
                         'telephone': order_form.cleaned_data.get('telephone'),
                         'address1': order_form.cleaned_data.get('address1'),
                         'address2': order_form.cleaned_data.get('address2'),
-                        'postal_code': order_form.cleaned_data.get('postal_code'),
+                        'postal_code': order_form.cleaned_data.get(
+                            'postal_code'
+                        ),
                         'city': order_form.cleaned_data.get('city'),
                         'county': order_form.cleaned_data.get('county'),
                         'country': order_form.cleaned_data.get('country')
                     }
 
-                order.shipping_details_html = f"<p>Telephone: {shipping_details.get('telephone')}</p>"
-                order.shipping_details_html = f"{order.shipping_details_html}<p>Address1: {shipping_details.get('address1')}</p>"
-                order.shipping_details_html = f"{order.shipping_details_html}<p>Address2: {shipping_details.get('address2')}</p>"
-                order.shipping_details_html = f"{order.shipping_details_html}<p>City: {shipping_details.get('city')}</p>"
-                order.shipping_details_html = f"{order.shipping_details_html}<p>County: {shipping_details.get('county')}</p>"
-                order.shipping_details_html = f"{order.shipping_details_html}<p>Postal Code: {shipping_details.get('postal_code')}</p>"
+                order.shipping_details_html = (
+                    f"<p>Telephone: {shipping_details.get('telephone')}</p>"
+                )
+                order.shipping_details_html += (
+                    f"<p>Address1: {shipping_details.get('address1')}</p>"
+                )
+                order.shipping_details_html += (
+                    f"<p>Address2: {shipping_details.get('address2')}</p>"
+                )
+                order.shipping_details_html += (
+                    f"<p>City: {shipping_details.get('city')}</p>"
+                )
+                order.shipping_details_html += (
+                    f"<p>County: {shipping_details.get('county')}</p>"
+                )
+                order.shipping_details_html += (
+                    f"<p>Postal Code: "
+                    f"{shipping_details.get('postal_code')}</p>"
+                )
 
                 order.save()
 
@@ -117,8 +135,10 @@ def checkout(request):
                         )
                         orderitems.save()
                     else:
-                        for size, quantity in item_data['items_by_size'].items():
-                            inventory = InventoryProduct.objects.filter(id_product=product, id_size__size=size)
+                        for size, quantity in \
+                                item_data['items_by_size'].items():
+                            inventory = InventoryProduct.objects.filter(
+                                id_product=product, id_size__size=size)
                             size_inventory = inventory.first()
                             orderitems = OrderItem(
                                 order=order,
@@ -129,13 +149,16 @@ def checkout(request):
                             orderitems.save()
 
                 customer_email = order.user.email
-                # user_details = order.user.userdetail_set.first() // Mofidy the emails, remove user_details and use order. 
                 subject = render_to_string(
-                    'checkout/confirmation_emails/confirmation_email_subject.txt',
+                    'checkout/confirmation_emails/'
+                    'confirmation_email_subject.txt',
                     {'order': order})
                 body = render_to_string(
                     'checkout/confirmation_emails/confirmation_email_body.txt',
-                    {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+                    {
+                        'order': order,
+                        'contact_email': settings.DEFAULT_FROM_EMAIL
+                    })
 
                 send_mail(
                     subject,
@@ -144,7 +167,9 @@ def checkout(request):
                     [customer_email]
                 )
 
-                return redirect(reverse('checkout_success', args=[order.order_number]))
+                return redirect(
+                    reverse('checkout_success', args=[order.order_number])
+                )
             else:
                 messages.error(request, 'There was an error with your form. \
                     Please double check your information.')

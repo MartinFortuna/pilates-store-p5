@@ -13,7 +13,7 @@ list_id = os.getenv('MAILCHIMP_AUDIENCE')
 
 
 def subscribe_newsLetter(request):
-    if request.method == "POST": 
+    if request.method == "POST":
         email = request.POST['email']
         firstName = request.POST['firstName']
         lastName = request.POST['lastName']
