@@ -32,7 +32,7 @@ SECRET_KEY = 'SECRET_KEY'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pilateswithchris.herokuapp.com', '8000-martinfortu-pilatesstor-ln14az9s3j8.ws-eu105.gitpod.io']
+ALLOWED_HOSTS = ['pilateswithchris.herokuapp.com', 'localhost', '8000-martinfortu-pilatesstor-ln14az9s3j8.ws-eu105.gitpod.io']
 
 
 # Application definition
