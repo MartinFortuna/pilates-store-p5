@@ -59,8 +59,6 @@ form.addEventListener('submit', function(ev) {
         'client_secret': clientSecret,
     };
     var url = '/checkout/cache_checkout_data/';
-    console.log(csrfToken)
-    console.log(postData)
 
     $.post(url, postData).done(function () {
         stripe.confirmCardPayment(clientSecret, {
