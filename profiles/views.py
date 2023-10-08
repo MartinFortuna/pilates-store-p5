@@ -8,6 +8,7 @@ from django.urls import include, path, reverse
 
 from profiles.forms import UserProfileForm, UserForm
 from profiles.models import UserDetail
+from checkout.models import Order
 
 # Create your views here.
 
@@ -17,9 +18,11 @@ def user_profile(request):
     """Display the user's profile"""
     user = request.user
     profiles = UserDetail.objects.filter(user_id=request.user)
+    orders = Order.objects.filter(user__id=request.user.id)
 
     context = {
         'profiles': profiles,
+        'orders': orders,
     }
 
     template = 'profiles/user_profile.html'
@@ -28,23 +31,20 @@ def user_profile(request):
 
 @login_required
 def order_history(request, order_number):
-    # Bug here, function not being called. 
     print("Inside order_history view")
     order = get_object_or_404(Order, order_number=order_number)
-    user_details = order.user.userdetails_set.first()
 
     messages.info(request, (
         f'This is a past confirmation for order number {order_number}.'
         'A confirmation email was sent on order date'
     ))
 
-    template - 'checkout/checkout_success.html'
     context = {
         'order': order,
-        'user_details': user_details,
         'from_userserfile': True,
     }
 
+    template = 'checkout/checkout_success.html'
     return render(request, template, context)
 
 
