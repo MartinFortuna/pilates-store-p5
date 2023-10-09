@@ -5,11 +5,11 @@
 
 
 Pilates with Chris is a Pilates one-stop shop fictional E-Commerce website for members only. 
-Cris, an experienced Pilates teacher, decided to start selling Pilates professional Pilates equipment. Users can add products to their shopping cart, rate them, and pay securely with Stripe.
+Cris, an experienced Pilates teacher, decided to start selling  professional Pilates equipment. Users can add products to their shopping cart, rate them, and pay securely with Stripe.
 
 ## Project Goals
 
-- As part of my journey as a student of Code Institute, the goal of this project is to demonstrate how I can apply my Bootstrap, Python & Django skills. I've built a fully friendly UX by not using the default built-in Django admin panel for the admin user view. 
+- As part of my journey as a student of Code Institute, the goal of this project is to demonstrate how I can apply my Bootstrap, Python & Django skills. I've built a fully friendly UX by not using the default built-in Django admin panel for the admin product management view. 
 
 ## Business Model
 
@@ -325,4 +325,88 @@ Unfortunately, I could not fix one line in webhook_handler.py, as can be seen he
 - Stripe 
 - Payments are successful on events log as below
 ![Stripe Test](docs/screenshots/validation/stripe-sucessfull-payment.png)
+
+## Deployment
+
+- This website was created using Gitpod, please use Code Institute's template to deploy as outlined below:
+
+### GitHub
+
+1. Start a new repository.
+   - Log in to GitHub.
+   - Create a new repository.
+   - Choose Code Institutes Template.
+
+### Gitpod
+
+2. Install Django and other necessary libraries:
+   - Use `pip3 install django` to install Django.
+   - Install any other required libraries.
+   - Create a `.env` file for sensitive data and add it to the `.gitignore` file to prevent it from being publicly accessible.  
+   - Freeze the requirements `pip3 freeze > requirements.txt`.
+   - Create a `Procfile`.
+
+### Heroku
+
+3. Log in to Heroku.
+    - Click the "New" button, then select "New app".
+    - Choose a unique app name and region, then click "Create app".
+    - Go to "Settings" and click "Reveal Config Vars". 
+    - Add your secret keys. 
+    - Go back to the top and click on "Deploy".
+    - Scroll down and click on "Connect to GitHub".
+    - Scroll down and click on "Deploy Branch".
+    - Once successfully deployed click on open app.
+
+### AWS S3 Bucket Creation
+
+4. Sign up/Sign in for an Amazon Web Services (AWS) account.
+    - Navigate to the S3 service in the AWS Management Console.
+    - Click "Create bucket" and choose a unique name for your bucket.
+    - Configure bucket settings.
+    - Create an IAM user.
+    - Download the csv file with the user's credentials, add them to Heroku.
+
+### Stripe Configuration
+
+5.  Sign up/Sign in for a Stripe account.
+    - Navigate to the "Developers" section and click "API keys".
+    - Obtain your "Publishable key" and "Secret key" and add them as environment variables in your project and Heroku app.
+    - In your Django project, configure the Stripe settings
+    - Test your Stripe integration.
+
+## Languages
+    - Html
+    - CSS
+    - Javascript
+    - Python
+
+## Frameworks and Tools Used
+    - Django
+    - Bootstrap
+    - ElephantSQL
+    - AWS
+    - Github
+    - Heroku
+    - Balsamiq Wireframes
+    - Gmail 
+    - Pexels for home images
+    - MailChimp for subscribe feature.
+    - Shopify for product images
+    - OAuth - Account Management
+    - Stripe
+    - urllib3
+    - Pillow
+    - Django Crispy Forms
+
+## Credits
+
+- The MailChimp feature code was taken from Geek for Geeks website and adapted for the purposes of this project. 
+- https://www.geeksforgeeks.org/create-newsletter-app-using-mailchimp-and-django/
+
+- Code institute template on Boutique Ado on which I based myself to build this project. 
+
+- To Cris Camacho for the Logo of this project and for letting me create this project based her future business plans. 
+
+
 
