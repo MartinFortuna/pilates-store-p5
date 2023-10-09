@@ -37,7 +37,9 @@ Cris, an experienced Pilates teacher, decided to start selling Pilates professio
 
 ### Facebook Page
 
-- A Facebook page will be//change once created// created to promote the website's content. 
+- A Facebook mock-up page was created to promote the website's content. 
+
+- - ![Facebook Page](docs/screenshots/design/facebook-mock-up.png)
 
 ## Agile Methodology
 
@@ -221,7 +223,7 @@ Unfortunately, I could not fix one line in webhook_handler.py, as can be seen he
 - No errors were found in the console.
 
 ## Manual testing
-    - All tests below passed:
+    All tests below passed:
         - Feedback messages:
             - Almost all user actions have meaningful feedback messages, as intended.
         - Navbar
@@ -243,6 +245,7 @@ Unfortunately, I could not fix one line in webhook_handler.py, as can be seen he
             - All users:
                 - Subscribe correctly works as intended at the time of this test, please note that MailChimp may deactivate the API if fake emails are entered.
                 - Unsubscribe brings the user to the Unsubscribe page as intended, unsubscribe works as intended. 
+                - MailChimp link correctly redirects users to the official website on a new page. 
         - Products page
             - Shows all products as intended. 
             - Filter filters by price in ascending order as intended.
@@ -256,7 +259,7 @@ Unfortunately, I could not fix one line in webhook_handler.py, as can be seen he
             - The search bar works as intended when searching for existing products.
             - If nothing matches the search criteria, or no search criteria is entered, an error message is displayed as intended and the user returns to the products page. 
             - The shopping cart Icon brings the user to the Shopping Bag page, as intended.
-            - If the product is clicked, brings the user the the product detail page as intended. 
+            - If the product is clicked, brings the user to the product detail page as intended. 
         - Product Detail page
             - Shows image, product name, price, category, rating, description, and quantity in stock as intended. 
             - Shows - and + inputs as well as size. Quantity < 1 and > 100 cannot be added to the bag, works as intended. 
@@ -280,6 +283,46 @@ Unfortunately, I could not fix one line in webhook_handler.py, as can be seen he
             - The checkout form is prepopulated with the user information captured on account creation and works as intended.
             - User can add or edit checkout form, works as intended. 
             - Order summary shows items in the bag, their subtotal, total, and delivery delta, as intended.
-            - The button to adjust the bag returns the user to the bag page, and works as intended. 
+            - The button to adjust the bag returns the user to the bag page and works as intended. 
             - Checkout card details correctly return validation errors, as intended.
             - Displays the amount to be charged, as intended.
+            - When a payment is successful, the user is redirected the the checkout success page.
+        - Checkout Sucess
+            - Order Summary is shown and saved to the user's profile.
+            - Confirmation email is sent to the user.
+            - Button brings back to the home page and works as intended. 
+        - My profile page
+            - The user can view, edit, and delete profiles, works as intended. 
+            - The user can see his order history and check each order detail, works as intended.
+            - Reset password link brings the user to the reset password page, and the email is sent, and works as intended. 
+        - Product Management
+            - Add a product:
+                - Only superusers have access to the add product page, works as intended.
+                - Form validation does not allow empty fields, only if adding size none. Works as intended. 
+                - Cancel button correctly returns the superuser to the products page, works as intended.
+                - Superuser cannot add a product price that has more than 6 digits, works as intended.
+            - Update a product:
+                - Same features as Add a product but here user can only update if selects the correct size of the product. Works as intended.
+            - Delete a product
+                - Superuser can delete a product, works as intended.
+        - Allauth
+            - All allauth templates are customized to match the design.
+            - Login
+                - Users need a username and password to log in, works as intended.
+                - Validation errors return to the user and work as intended. 
+                - Users can access the sign-up page, which works as intended. 
+                - Users can sign in, works as intended.
+                - Users are redirected to the home page, which works as intended.
+            - Register
+                - Validation errors return to the user, if use exists, for example, works as intended.
+                - Name and first name required for sign-up, works as intended.
+                - Confirmation email is sent to the user's email address, and works as intended. 
+            - Logout
+                - Correctly logs out the user. 
+        - Footer
+            - Correctly redirects users to social media on new tabs. 
+
+- Stripe 
+- Payments are successful on events log as below
+![Stripe Test](docs/screenshots/validation/stripe-sucessfull-payment.png)
+
